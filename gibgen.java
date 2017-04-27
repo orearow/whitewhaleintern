@@ -4,33 +4,35 @@ import java.io.*;
 
 public class gibgen {
    public static void main(String[] args) {
-   	String str="";
-   	String newText=""; 
+    String str="";
+    String newText=""; 
 
-   	// checking command line arguments for the name of the file
-   	if (args.length == 0) {
+    // checking command line arguments for the name of the file
+    if (args.length == 0) {
             System.out.println("no arguments were given.");
         }
-        else {
-              String filename= args[0];
-             // System.out.println(filename);
-
+//testing to see if the command lind input is the name of a file or just some string
+    String input= args[0];
+    if (input.substring(input.length() - 3,input.length() ).equals("txt")){
     // reading the file         
-	try(BufferedReader br = new BufferedReader(new FileReader(filename))) {
-	    StringBuilder sb = new StringBuilder();
-	    String line = br.readLine();
+        try(BufferedReader br = new BufferedReader(new FileReader(input))) {
+            StringBuilder sb = new StringBuilder();
+            String line = br.readLine();
 
-	    while (line != null) {
-	        sb.append(line);
-	        sb.append(System.lineSeparator());
-	        line = br.readLine();
-	    }
-    str = sb.toString();
-	}
-          catch(Exception e){
-          	System.out.println( filename+ " file not found");
-          }
-          }
+            while (line != null) {
+                sb.append(line);
+                sb.append(System.lineSeparator());
+                line = br.readLine();
+            }
+          str = sb.toString();
+        }
+                catch(Exception e){
+                  System.out.println( input+ " file not found");
+                }
+              }
+    else{          
+     str= input;}
+
 
 //splitting the string at whitespace and punctuation
 String[] splitArray = str.split("\\s+|(?=\\p{Punct})|(?<=\\p{Punct})");
@@ -38,19 +40,19 @@ String[] splitArray = str.split("\\s+|(?=\\p{Punct})|(?<=\\p{Punct})");
  for (String word : splitArray) {
 
 //three is the base case to scramble the string, also checking if word is a number or the word is all uppercase  
-  	if((word.length()> 3) && (!word.matches(".*\\d+.*"))  && (!word.toUpperCase().equals(word))) {
-  		//calling the shuffle function
-  		word=shuffle(word);
-  	}
+    if((word.length()> 3) && (!word.matches(".*\\d+.*"))  && (!word.toUpperCase().equals(word))) {
+      //calling the shuffle function
+      word=shuffle(word);
+    }
 
-  	   newText= (newText + " "+ word);
+       newText= (newText + " "+ word);
       }
       //getting rid of the extra white space before the punctuation
       newText = newText.replaceAll("\\s+(?=\\p{Punct})", "");
 
       System.out.println(newText);
 
-	}
+  }
 
 
 public static String shuffle(String word){
@@ -77,11 +79,11 @@ char[] characters =word.substring(1, word.length() - 1).toCharArray();
     //since palendromes cant ve scrambled
     if ((newWord.equals(word)) &&(!remaining.equals(new StringBuilder(remaining).reverse().toString()) )) {
 
-  		newWord=shuffle(word);
+      newWord=shuffle(word);
 
 }
     return new String(newWord);
 
 }
 
-}		
+}   
