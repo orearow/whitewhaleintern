@@ -63,6 +63,7 @@ the program runs using command line input. Either the command line input is a st
 In the case of a string input: Java gibgen "Ore is very cool" 
 In the case of a file name: Java gibgen cool.txt
 * cool.txt needs to be in the same folder as gibgen
+* sorry I know the instructions say to use cat, but cat does not seem to be recognized by the command prompt on windows. 
 
 
 Coding Questions
