@@ -57,10 +57,12 @@ For completion by applicant
 
 Quick Start
 -----------
-
-* Replace this text with instructions on how to execute your program
-* What programming language did you use? See [here](http://ideone.com/) for the supported ones.
-* Also tell us anything else the reviewer should know about your code
+1) compile the program as so: Javac gibgen.java
+2) run the program:
+the program runs using command line input. Either the command line input is a string or a file name.
+In the case of a string input: Java gibgen "Ore is very cool" 
+In the case of a file name: Java gibgen cool.txt
+* cool.txt needs to be in the same folder as gibgen
 
 
 Coding Questions
